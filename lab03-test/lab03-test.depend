@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1586518993 source:c:\users\екрке\desktop\lab03\lab03.cpp
+	<vector>
+
+1586524084 source:c:\users\екрке\desktop\lab03\lab03-test\test.cpp
+	"lab03.h"
+	<cassert>
+
+1586523402 c:\users\екрке\desktop\lab03\lab03-test\lab03.h
+	"lab03.h"
+	<iostream>
+	<vector>
+
