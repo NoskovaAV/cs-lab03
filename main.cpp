@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include "lab03.h"
-
+#include "svg.h"
 
 using namespace std;
 vector<double> input_numbers(size_t count)
@@ -14,18 +15,23 @@ vector<double> input_numbers(size_t count)
     return result;
 }
 
-void make_histogram(vector<double> numbers, vector<size_t> &bins, double max, double min, size_t bin_count)
+vector<size_t> make_histogram(vector<double> numbers, size_t count)
 {
+    vector<size_t> result(count);
+    double max, min;
+    find_minmax(numbers, min, max);
     for (double number : numbers)
     {
-        size_t bin = (size_t)((number - min) / (max - min) * bin_count);
-        if (bin == bin_count)
+        size_t bin = (size_t)((number - min) / (max - min) * count);
+        if (bin == count)
         {
             bin--;
         }
-        bins[bin]++;
+        result[bin]++;
     }
+    return result;
 }
+
 int main()
 {
 
@@ -37,14 +43,9 @@ int main()
     cerr << "Enter column count: ";
     cin >> bin_count;
 
-    double min, max;
- find_minmax(numbers, min, max);
-
-    vector<size_t> bins(bin_count);
-    make_histogram(numbers, bins, max, min, bin_count);
+    const auto bins = make_histogram(numbers, bin_count);
 
     show_histogram_svg(bins);
-
 
     return 0;
 }
