@@ -35,6 +35,10 @@
 		<Unit filename="lab03.cpp" />
 		<Unit filename="lab03.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="svg.cpp" />
+		<Unit filename="svg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
