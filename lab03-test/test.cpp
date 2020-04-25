@@ -1,4 +1,5 @@
 #include "lab03.h"
+#include "svg.h"
 #include <cassert>
 
 void test_positive()

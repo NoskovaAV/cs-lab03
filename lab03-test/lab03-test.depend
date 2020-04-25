@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1586518993 source:c:\users\екрке\desktop\lab03\lab03.cpp
+1587737462 source:c:\users\екрке\desktop\lab03\lab03.cpp
 	<vector>
+	<iostream>
+	<vector>
+	"lab03.h"
 
 1586524084 source:c:\users\екрке\desktop\lab03\lab03-test\test.cpp
 	"lab03.h"
@@ -8,6 +11,10 @@
 
 1586523402 c:\users\екрке\desktop\lab03\lab03-test\lab03.h
 	"lab03.h"
+	<iostream>
+	<vector>
+
+1587724708 c:\users\екрке\desktop\lab03\lab03.h
 	<iostream>
 	<vector>
 
