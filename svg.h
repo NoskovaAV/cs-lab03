@@ -5,8 +5,6 @@
 #include <iostream>
 
 using namespace std;
-
-using namespace std;
 void svg_begin(double width, double height);
 void svg_end();
 void svg_text(double left, double baseline, size_t text);

@@ -34,42 +34,47 @@ size_t find_max_column(const vector<size_t>& bins)
     size_t max_column = bins[0];
     for (size_t bin : bins)
     {
-        if (max_column<bin)
-            max_column=bin;
+        if (max_column < bin)
+
+            max_column = bin;
+
     }
     return max_column;
 }
+
 size_t find_min_column(const vector<size_t>& bins)
 {
     size_t min_column = bins[0];
     for (size_t bin : bins)
     {
-        if (min_column<bin)
-            min_column=bin;
+        if (min_column > bin)
+
+            min_column = bin;
     }
     return min_column;
 }
+
 string create_color_column(const vector<size_t>& bins, size_t max_count, size_t bin)
 {
-    size_t max = find_max_column(bins);
     size_t min = find_min_column(bins);
-    size_t color;
+    size_t max = find_max_column(bins);
+    size_t color_column;
     if (bin == max)
     {
-        color = 111;
+        color_column = 111;
     }
     else if (bin == min)
     {
-        color = 999;
+        color_column = 999;
     }
     else
     {
-        color = (10 - (bin * 9) / max_count)*111;
+        color_column = (10 - (bin * 9) / max_count)*111;
     }
     ostringstream c;
-    c << color;
-    string color_column = c.str();
-    return color_column;
+    c << color_column;
+    string color = c.str();
+    return color;
 }
 
 void show_histogram_svg(const vector<size_t>& bins)
@@ -81,10 +86,9 @@ void show_histogram_svg(const vector<size_t>& bins)
     const auto TEXT_WIDTH = 50;
     const auto BIN_HEIGHT = 30;
     const auto BLOCK_WIDTH = 10;
-    const size_t MAX_ASTERISK = IMAGE_WIDTH - TEXT_LEFT - TEXT_WIDTH;
+    const size_t MAX_ASTERISK = IMAGE_WIDTH - TEXT_WIDTH - TEXT_LEFT;
     double top = 0;
     size_t max_count = 0;
-
     for (size_t count : bins)
     {
         if (count > max_count)
@@ -93,27 +97,27 @@ void show_histogram_svg(const vector<size_t>& bins)
         }
     }
 
-    const bool scaling_needed = max_count > MAX_ASTERISK;
+    const bool scaling_needed = max_count * BLOCK_WIDTH > MAX_ASTERISK;
 
     svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
 
     for (size_t bin : bins)
     {
 
-        string color_column = create_color_column(bins, max_count, bin);
+        string color = create_color_column(bins, max_count, bin);
 
-        cout << color_column << endl;
+        cout << color << endl;
 
         size_t height = bin;
         if (scaling_needed)
         {
-            const double scaling_factor = (double)MAX_ASTERISK / max_count;
+            const double scaling_factor = (double)MAX_ASTERISK / (max_count * BLOCK_WIDTH);
             height = (size_t)(bin * scaling_factor);
         }
 
         const double bin_width = BLOCK_WIDTH * height;
         svg_text(TEXT_LEFT, top + TEXT_BASELINE, bin);
-        svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT, "white", "#" + color_column);
+        svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT, "#CCFF00", "#" + color);
         top += BIN_HEIGHT;
     }
     svg_end();
