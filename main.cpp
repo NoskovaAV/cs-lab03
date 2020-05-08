@@ -3,47 +3,53 @@
 #include <string>
 #include "lab03.h"
 #include "svg.h"
+#include <curl/curl.h>
 
 using namespace std;
-vector<double> input_numbers(size_t count)
+
+vector<double> input_numbers(istream& in, size_t count)
 {
     vector<double> result(count);
-    for (size_t i = 0; i < count; i++)
-    {
-        cin >> result[i];
-    }
+    for (size_t i=0; i<count; i++)
+    in >> result[i];
+
     return result;
+
 }
 
-vector<size_t> make_histogram(vector<double> numbers, size_t count)
+Input read_input(istream& in,bool promt)
 {
-    vector<size_t> result(count);
-    double max, min;
-    find_minmax(numbers, min, max);
-    for (double number : numbers)
-    {
-        size_t bin = (size_t)((number - min) / (max - min) * count);
-        if (bin == count)
-        {
-            bin--;
-        }
-        result[bin]++;
-    }
-    return result;
-}
-
-int main()
-{
+    Input data;
 
     size_t number_count;
-    cin >> number_count;
-    const auto numbers = input_numbers(number_count);
 
-    size_t bin_count;
+if (promt)
+{
+    cerr << "Enter number count: ";
+    in >> number_count;
+
+    cerr << "Enter numbers: ";
+    data.numbers = input_numbers(in, number_count);
+
     cerr << "Enter column count: ";
-    cin >> bin_count;
+    in >> data.bin_count;
+}
+else
+{
+    in >> number_count;
+    data.numbers = input_numbers(in,number_count);
+    in >> data.bin_count;
+}
+    return data;
+}
 
-    const auto bins = make_histogram(numbers, bin_count);
+
+int main()
+{ curl_global_init(CURL_GLOBAL_ALL);
+
+    Input data = read_input(cin,true);
+
+    const auto bins = make_histogram(data);
 
     show_histogram_svg(bins);
 
