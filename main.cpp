@@ -34,11 +34,6 @@ vector<size_t> make_histogram(vector<double> numbers, size_t count)
 
 int main()
 {
-    const char* name = "Commander Shepard";
-    int year = 2154;
-    printf("%s was born in %d.\n", name, year);
-    printf("n = %08x\n", 0x1234567);
-    return 0;
 
     size_t number_count;
     cin >> number_count;
