@@ -2,6 +2,8 @@
 #define LAB03_H_INCLUDED
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <string>
 
 using namespace std;
 struct Input
@@ -11,4 +13,5 @@ struct Input
 };
 void find_minmax(const vector<double>& numbers, double& min, double& max);
 vector<size_t> make_histogram(const Input&data);
+string information_system();
 #endif // LAB03_H_INCLUDED

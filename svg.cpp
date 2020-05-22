@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <sstream> // for stringsteam
+#include "lab03.h"
 
 void svg_begin(double width, double height)
 {
@@ -67,5 +68,8 @@ void show_histogram_svg(const vector<size_t>& bins)
         svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT, "#CCFF00", "#ffeeee");
         top += BIN_HEIGHT;
     }
+
+    cout << "<text x='" << TEXT_LEFT << "' y='"<<top+BIN_HEIGHT<<"'>"<<information_system()<<"</text>";
+
     svg_end();
 }
