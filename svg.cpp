@@ -55,10 +55,12 @@ size_t find_min_column(const vector<size_t>& bins)
 }
 
 string create_color_column(const vector<size_t>& bins, size_t max_count, size_t bin)
-{
+{  if (bins.size()!=0)
+    {
     size_t min = find_min_column(bins);
     size_t max = find_max_column(bins);
     size_t color_column;
+
     if (bin == max)
     {
         color_column = 111;
@@ -75,6 +77,8 @@ string create_color_column(const vector<size_t>& bins, size_t max_count, size_t 
     c << color_column;
     string color = c.str();
     return color;
+    }
+    return "000";
 }
 
 void show_histogram_svg(const vector<size_t>& bins)
