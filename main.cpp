@@ -54,6 +54,7 @@ void show_histogram_text(vector<size_t>bins)
         }
         cout << '\n';
     }
+      cout << information_system();
 }
 
 Input read_input(istream& in,bool promt)
