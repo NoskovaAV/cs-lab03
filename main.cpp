@@ -116,19 +116,63 @@ Input download(const string& address) {
 
     return read_input(buffer, false);
 }
+Option format(int argc, char** argv)
+{
+    Option form;
+    form.txt = false;
+    form.svg = false;
+    form.help = false;
+    form.url = 0;
+     for (int i = 1; i<argc; i++)
+     {
+         if (strcmp(argv[i], "-format") == 0)
+         {
+     if (strcmp(argv[i+1], "txt") == 0)
+{
+
+    form.txt = true;
+    i++;
+}
+else if (strcmp(argv[i+1], "svg") == 0)
+{
+    form.svg = true;
+    i++;
+
+}
+else {
+            form.help = true;
+            }
+         }
+            else {
+            form.url = argv[i];
+        }}
+ return form;
+}
 
 int main(int argc, char* argv[]) {
+    Option output = format(argc, argv);
+    if (output.help) {
+        cerr << "Enter option -format txt or -format svg" ;
+        exit(2);
+    }
     Input input;
-    if (argc > 1)
+    if (output.url)
     {
-        input = download(argv[1]);
+        input = download(output.url);
     } else
     {
         input = read_input(cin, true);
     }
-        const auto bins = make_histogram(input);
+    const auto bins = make_histogram(input);
+    if (output.txt)
+    {
+      show_histogram_text(bins);
+    }
 
+if (output.svg)
+{
     show_histogram_svg(bins);
+}
 
     return 0;
 }
