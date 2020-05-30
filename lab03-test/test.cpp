@@ -1,5 +1,5 @@
-#include "lab03.h"
-#include "svg.h"
+#include "../lab03.h"
+#include "../svg.h"
 #include <cassert>
 
 void test_positive()
@@ -42,11 +42,16 @@ void test_empty()
     assert(min == 0);
     assert(max == 0);
 }
+void test_homework_4 ()
+{
+    vector<size_t> bins = {};
+    assert(create_color_column(bins,0,0) == "000");
+}
 void test_homework_1 ()
 {
     vector<size_t> bins = {3,4,7,21};
     assert(create_color_column(bins,21,bins[0]) == "999");
-    assert(create_color_column(bins,21,bins[1]) == "888");
+    assert(create_color_column(bins,21,bins[1]) == "999");
     assert(create_color_column(bins,21,bins[2]) == "777");
     assert(create_color_column(bins,21,bins[3]) == "111");
 }
@@ -74,6 +79,9 @@ main()
     test_same();
     test_one();
     test_empty();
-
+    test_homework_1();
+    test_homework_2();
+    test_homework_3();
+    test_homework_4();
 }
 

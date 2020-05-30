@@ -18,3 +18,40 @@
 	<iostream>
 	<vector>
 
+1590409489 source:c:\users\nastya\desktop\lab03\lab03.cpp
+	<vector>
+	<iostream>
+	<vector>
+	"lab03.h"
+
+1590409489 c:\users\nastya\desktop\lab03\lab03.h
+	<iostream>
+	<vector>
+
+1590483740 source:c:\users\nastya\desktop\lab03\svg.cpp
+	"svg.h"
+	<vector>
+	<iostream>
+	<string>
+	<sstream>
+
+1590409489 c:\users\nastya\desktop\lab03\svg.h
+	<string>
+	<vector>
+	<iostream>
+
+1590483787 source:c:\users\nastya\desktop\lab03\lab03-test\test.cpp
+	"../lab03.h"
+	"../svg.h"
+	<cassert>
+
+1586523402 c:\users\nastya\desktop\lab03\lab03-test\lab03.h
+	"lab03.h"
+	<iostream>
+	<vector>
+
+1590409489 c:\users\nastya\desktop\lab03\lab03-test\svg.h
+	<string>
+	<vector>
+	<iostream>
+
